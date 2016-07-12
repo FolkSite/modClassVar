@@ -43,6 +43,7 @@ $_lang['modclassvar_unit'] = 'Ед.Изм.';
 $_lang['modclassvar_name'] = 'Название';
 $_lang['modclassvar_description'] = 'Описание';
 
+$_lang['modclassvar_var'] = 'Переменная';
 $_lang['modclassvar_value'] = 'Значение';
 $_lang['modclassvar_active'] = 'Включен';
 
@@ -75,11 +76,16 @@ $_lang['modclassvar_tooltip_type_numberfield'] = 'Числовое поле';
 $_lang['modclassvar_tooltip_type_datefield'] = 'Дата';
 $_lang['modclassvar_tooltip_type_modclassvar-combo-datetime'] = 'Дата';
 $_lang['modclassvar_tooltip_type_modclassvar-combo-user'] = 'Пользователь';
-$_lang['modclassvar_tooltip_type_modclassvar-combo-autocomplete'] = 'Авто-комплит';
+$_lang['modclassvar_tooltip_type_modclassvar-combo-autocomplete'] = 'Автокомплит';
 $_lang['modclassvar_tooltip_type_modclassvar-combo-option'] = 'Опции';
 $_lang['modclassvar_tooltip_type_modclassvar-combo-file'] = 'Файл';
 $_lang['modclassvar_tooltip_type_modclassvar-combo-ymaps-place'] = 'Местоположение Yandex';
 $_lang['modclassvar_tooltip_type_modclassvar-combo-gmaps-place'] = 'Местоположение Google';
+$_lang['modclassvar_tooltip_type_modclassvar-combo-user'] = 'Пользователь';
+$_lang['modclassvar_tooltip_type_modclassvar-combo-users'] = 'Пользователи';
+$_lang['modclassvar_tooltip_type_modclassvar-combo-resource'] = 'Ресурс';
+$_lang['modclassvar_tooltip_type_modclassvar-combo-resources'] = 'Ресурсы';
+
 
 
 $_lang['modclassvar_tooltip_type_modx-combo-boolean'] = 'Булевое поле';
