@@ -49,35 +49,3 @@ Ext.override(MODx.panel.User, {
 	}
 
 });
-
-
-Ext.ComponentMgr.onAvailable('modx-user-tabs', function() {
-
-	var tabs = this;
-	tabs.on('beforerender', function() {
-
-		var is = tabs.items.items.filter(function(row) {
-			if (row.id == 'modclassvar-panel-user-inject') {
-				return true;
-			} else {
-				return false;
-			}
-		});
-
-		var isHide = false;
-
-		if (!modclassvar.config.user) {
-			isHide = true;
-		}
-		
-		var groups = MODx.config.modclassvar_working_groups || '';
-		isHide = !modclassvar.tools.arrayIntersect(groups.split(','), modclassvar.config.working_groups);
-
-		if (is.length == 0 && !isHide) {
-			tabs.add({
-				xtype: 'modclassvar-panel-user-inject',
-				title: _('modclassvar_user')
-			});
-		}
-	});
-});

@@ -52,38 +52,3 @@ Ext.override(MODx.panel.Resource, {
 	}
 
 });
-
-
-Ext.ComponentMgr.onAvailable('modx-resource-tabs', function() {
-
-	var tabs = this;
-	tabs.on('beforerender', function() {
-
-		var is = tabs.items.items.filter(function(row) {
-			if (row.id == 'modclassvar-panel-resource') {
-				return true;
-			} else {
-				return false;
-			}
-		});
-
-		var isHide = false;
-
-		var $resource = Ext.getCmp("modx-page-update-resource");
-		var templates = MODx.config.modclassvar_working_templates || '';
-		if (templates.split(',').indexOf(''+$resource.record.template+'') < 0) {
-			isHide = true;
-		}
-
-		if (!modclassvar.config.resource) {
-			isHide = true;
-		}
-
-		if (is.length == 0 && !isHide) {
-			tabs.add({
-				xtype: 'modclassvar-panel-resource-inject',
-				title: _('modclassvar_resource')
-			});
-		}
-	});
-});
