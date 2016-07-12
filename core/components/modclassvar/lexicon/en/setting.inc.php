@@ -1,6 +1,7 @@
 <?php
 
 $_lang['area_modclassvar_main'] = 'Основные';
+$_lang['area_modclassvar_script'] = 'Скрипты';
 
 $_lang['setting_modclassvar_working_templates'] = 'Активные шаблоны';
 $_lang['setting_modclassvar_working_templates_desc'] = 'Список id шаблонов через запятую, для которых нужно активировать вкладку с переменными.';
