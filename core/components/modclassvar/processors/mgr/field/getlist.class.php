@@ -205,6 +205,8 @@ class modClassVarFieldGetListProcessor extends modObjectGetListProcessor
         $show = true;
         $cid = (int)$this->getProperty('cid');
         $class = $this->getProperty('class');
+
+        /** TODO */
         if ($cid AND $class) {
             $condition = $this->modx->getOption('condition', $array, '{}', true);
             $condition = json_decode($condition, true);
