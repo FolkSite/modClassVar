@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<model package="modclassvar" baseClass="xPDOObject" platform="mysql" defaultEngine="MyISAM" phpdoc-package="modclassvar"
+	   version="1.1">
+
+	<object class="modClassVarField" table="modclassvar_fields" extends="xPDOSimpleObject">
+		<field key="name" dbtype="varchar" precision="255" phptype="string" null="false" default=""/>
+		<field key="key" dbtype="varchar" precision="255" phptype="string" null="false" default="" index="index"/>
+		<field key="type" dbtype="varchar" precision="255" phptype="string" null="false" default="" index="index"/>
+		<field key="handler" dbtype="varchar" precision="50" phptype="string" null="false" default=""/>
+		<field key="unit" dbtype="tinytext" phptype="string" null="true"/>
+		<field key="description" dbtype="text" phptype="string" null="true"/>
+		<field key="config" dbtype="text" phptype="json" null="true"/>
+		<field key="condition" dbtype="text" phptype="json" null="true"/>
+		<field key="properties" dbtype="text" phptype="json" null="true"/>
+
+		<field key="active" dbtype="tinyint" precision="1" phptype="boolean" attributes="unsigned" null="false"
+			   default="1" index="index"/>
+		<field key="rank" dbtype="int" precision="10" phptype="integer" attributes="unsigned" null="false" default="0"
+			   index="index"/>
+
+		<index alias="key" name="key" primary="false" unique="true" type="BTREE">
+			<column key="key" length="" collation="A" null="false"/>
+		</index>
+		<index alias="type" name="type" primary="false" unique="false" type="BTREE">
+			<column key="type" length="" collation="A" null="false"/>
+		</index>
+		<index alias="active" name="active" primary="false" unique="false" type="BTREE">
+			<column key="active" length="" collation="A" null="false"/>
+		</index>
+
+		<composite alias="Values" class="modClassVarValues" local="key" foreign="key" cardinality="many"
+				   owner="local"/>
+
+		<validation>
+			<rule field="key" name="invalid" type="preg_match"
+				  rule="/^(?!\W+)(?!\d)[a-zA-Z0-9\x2d-\x2f\x7f-\xff-_]+(?!\s)$/"
+				  message="modclassvar_extra_err_invalid_key"/>
+			<rule field="key" name="reserved" type="preg_match"
+				  rule="/^(?!(id|type|contentType|pagetitle|longtitle|description|alias|link_attributes|published|pub_date|unpub_date|parent|isfolder|introtext|content|richtext|template|menuindex|searchable|cacheable|createdby|createdon|editedby|editedon|deleted|deletedby|deletedon|publishedon|publishedby|menutitle|donthit|privateweb|privatemgr|content_dispo|hidemenu|class_key|context_key|content_type|uri|uri_override|hide_children_in_tree|show_in_tree|article|price|old_price|weight|thumb|source|action|hidden|unique|option|options|modclassvar)$)/"
+				  message="modclassvar_extra_err_reserved_key"/>
+		</validation>
+
+	</object>
+
+
+	<object class="modClassVarSection" table="modclassvar_sections" extends="xPDOObject">
+		<field key="fid" dbtype="int" precision="10" phptype="integer" attributes="unsigned" null="false" default="" index="pk"/>
+		<field key="name" dbtype="varchar" precision="255" phptype="string" null="false" default=""/>
+
+		<index alias="field_section" name="field_section" primary="false" unique="true" type="BTREE" >
+			<column key="fid" length="" collation="A" null="false" />
+			<column key="name" length="" collation="A" null="false" />
+		</index>
+
+		<aggregate alias="Fields" class="modClassVarField" local="fid" foreign="id" cardinality="one" owner="foreign"/>
+
+	</object>
+
+
+	<object class="modClassVarValues" table="modclassvar_values" extends="xPDOObject">
+		<field key="class" dbtype="varchar" precision="255" phptype="string" null="false" default="" index="pk"/>
+		<field key="cid" dbtype="int" precision="10" phptype="integer" null="false" default="" index="pk"/>
+		<field key="key" dbtype="varchar" precision="60" phptype="string" null="false" default="" index="pk"/>
+		<field key="value" dbtype="text" phptype="string" null="false" index="fulltext"/>
+
+		<index alias="class_field" name="class_field" primary="false" unique="false" type="BTREE">
+			<column key="class" length="" collation="A" null="false"/>
+			<column key="cid" length="" collation="A" null="false"/>
+			<column key="key" length="" collation="A" null="false"/>
+		</index>
+
+		<index alias="value_ft" name="value_ft" primary="false" unique="false" type="FULLTEXT">
+			<column key="value" length="" collation="A" null="false"/>
+		</index>
+
+		<aggregate alias="Field" class="modClassVarField" local="key" foreign="key" cardinality="one" owner="foreign"/>
+
+		<validation>
+			<rule field="key" name="invalid" type="preg_match"
+				  rule="/^(?!\W+)(?!\d)[a-zA-Z0-9\x2d-\x2f\x7f-\xff-_]+(?!\s)$/"
+				  message="modclassvar_extra_err_invalid_key"/>
+			<rule field="key" name="reserved" type="preg_match"
+				  rule="/^(?!(id|type|contentType|pagetitle|longtitle|description|alias|link_attributes|published|pub_date|unpub_date|parent|isfolder|introtext|content|richtext|template|menuindex|searchable|cacheable|createdby|createdon|editedby|editedon|deleted|deletedby|deletedon|publishedon|publishedby|menutitle|donthit|privateweb|privatemgr|content_dispo|hidemenu|class_key|context_key|content_type|uri|uri_override|hide_children_in_tree|show_in_tree|article|price|old_price|weight|thumb|source|action|hidden|unique|option|options|modclassvar)$)/"
+				  message="modclassvar_extra_err_reserved_key"/>
+		</validation>
+
+	</object>
+
+</model>

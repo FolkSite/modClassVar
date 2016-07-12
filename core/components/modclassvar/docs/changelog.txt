@@ -1,0 +1,5 @@
+Changelog for modclassvar
+
+1.0.0-beta (30.06.2016)
+==============
+- Initial
