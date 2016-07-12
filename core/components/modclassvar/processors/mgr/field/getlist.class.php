@@ -207,6 +207,8 @@ class modClassVarFieldGetListProcessor extends modObjectGetListProcessor
         $class = $this->getProperty('class');
 
         /** TODO */
+        $level = $this->modx->getLogLevel();
+        $this->modx->setLogLevel(xPDO::LOG_LEVEL_FATAL);
         if ($cid AND $class) {
             $condition = $this->modx->getOption('condition', $array, '{}', true);
             $condition = json_decode($condition, true);
@@ -224,6 +226,7 @@ class modClassVarFieldGetListProcessor extends modObjectGetListProcessor
                 }
             }
         }
+        $this->modx->setLogLevel($level);
 
         return $show;
     }

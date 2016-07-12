@@ -3,6 +3,7 @@ Changelog for modclassvar
 1.0.5-beta (12.07.2016)
 ==============
 - Fix "inject"
+- Add "shit" (TODO)
 
 1.0.4-beta (12.07.2016)
 ==============
