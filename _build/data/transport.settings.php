@@ -15,32 +15,20 @@ $tmp = array(
         'area'  => 'modclassvar_main',
     ),
 
-    'field_prefix'       => array(
-        'value' => '',
-        'xtype' => 'textfield',
-        'area'  => 'modclassvar_main',
-    ),
-    'prefix_key'       => array(
-        'value' => 'modclassvar.',
-        'xtype' => 'textfield',
-        'area'  => 'modclassvar_main',
-    ),
     'field_placeholders' => array(
         'xtype' => 'combo-boolean',
         'value' => true,
         'area'  => 'modclassvar_main',
     ),
-
-    'script_ymaps' => array(
-        'value' => 'https://api-maps.yandex.ru/2.1/?lang=ru_RU&mode=release',
-        'xtype' => 'textarea',
-        'area'  => 'modclassvar_script',
+    'field_prefix'       => array(
+        'value' => '',
+        'xtype' => 'textfield',
+        'area'  => 'modclassvar_main',
     ),
-
-    'script_gmaps' => array(
-        'value' => 'https://maps.google.com/maps/api/js?sensor=false',
-        'xtype' => 'textarea',
-        'area'  => 'modclassvar_script',
+    'prefix_key'         => array(
+        'value' => 'modclassvar.',
+        'xtype' => 'textfield',
+        'area'  => 'modclassvar_main',
     ),
 
     'force_script_ymaps' => array(
@@ -53,24 +41,35 @@ $tmp = array(
         'value' => true,
         'area'  => 'modclassvar_script',
     ),
+    'script_ymaps'       => array(
+        'value' => 'https://api-maps.yandex.ru/2.1/?lang=ru_RU&mode=release',
+        'xtype' => 'textarea',
+        'area'  => 'modclassvar_script',
+    ),
+    'script_gmaps'       => array(
+        'value' => 'https://maps.google.com/maps/api/js?sensor=false',
+        'xtype' => 'textarea',
+        'area'  => 'modclassvar_script',
+    ),
+
 
     //временные
 
-   /* 'assets_path' => array(
-        'value' => '{base_path}modclassvar/assets/components/modclassvar/',
-        'xtype' => 'textfield',
-        'area'  => 'modclassvar_temp',
-    ),
-    'assets_url'  => array(
-        'value' => '/modclassvar/assets/components/modclassvar/',
-        'xtype' => 'textfield',
-        'area'  => 'modclassvar_temp',
-    ),
-    'core_path'   => array(
-        'value' => '{base_path}modclassvar/core/components/modclassvar/',
-        'xtype' => 'textfield',
-        'area'  => 'modclassvar_temp',
-    ),*/
+    /* 'assets_path' => array(
+         'value' => '{base_path}modclassvar/assets/components/modclassvar/',
+         'xtype' => 'textfield',
+         'area'  => 'modclassvar_temp',
+     ),
+     'assets_url'  => array(
+         'value' => '/modclassvar/assets/components/modclassvar/',
+         'xtype' => 'textfield',
+         'area'  => 'modclassvar_temp',
+     ),
+     'core_path'   => array(
+         'value' => '{base_path}modclassvar/core/components/modclassvar/',
+         'xtype' => 'textfield',
+         'area'  => 'modclassvar_temp',
+     ),*/
 
 );
 
