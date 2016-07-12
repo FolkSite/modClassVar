@@ -54,11 +54,9 @@ $tmp = array(
         'area'  => 'modclassvar_script',
     ),
 
-//Ymaps
-
     //временные
 
-    'assets_path' => array(
+   /* 'assets_path' => array(
         'value' => '{base_path}modclassvar/assets/components/modclassvar/',
         'xtype' => 'textfield',
         'area'  => 'modclassvar_temp',
@@ -72,7 +70,7 @@ $tmp = array(
         'value' => '{base_path}modclassvar/core/components/modclassvar/',
         'xtype' => 'textfield',
         'area'  => 'modclassvar_temp',
-    ),
+    ),*/
 
 );
 

@@ -1,8 +1,5 @@
 <?php
 
-// For debug
-ini_set('display_errors', 1);
-ini_set('error_reporting', -1);
 
 /**
  * The base class for modclassvar.
@@ -246,6 +243,10 @@ class modclassvar
         return $fields;
     }
 
+    /**
+     * @param modManagerController $controller
+     * @param array                $setting
+     */
     public function loadControllerJsCss(modManagerController &$controller, array $setting = array())
     {
         $controller->addLexiconTopic('modclassvar:default');
@@ -318,6 +319,11 @@ class modclassvar
         }
     }
 
+    /**
+     * @param int $id
+     *
+     * @return array
+     */
     public function getUserGroups($id = 0)
     {
         $data = array();
@@ -357,8 +363,15 @@ class modclassvar
     }
 
 
-
-
+    /**
+     * @param string $class
+     * @param int    $cid
+     * @param null   $key
+     * @param bool   $process
+     * @param null   $prefix
+     *
+     * @return mixed|null
+     */
     public function getValues($class = 'modResource', $cid = 0, $key = null, $process = false, $prefix = null)
     {
         if (empty($class)) {
@@ -380,6 +393,12 @@ class modclassvar
         return $this->modx->call('modClassVarValues', 'getValues', array(&$this->modx, $class, $cid, $key, $process, $prefix));
     }
 
+    /**
+     * @param        $fqn
+     * @param string $path
+     *
+     * @return bool|string
+     */
     public function loadClass($fqn, $path = '')
     {
         if (empty($fqn)) {
