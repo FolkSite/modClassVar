@@ -8,16 +8,7 @@ class modClassVarSectionRemoveProcessor extends modObjectProcessor
     /** {@inheritDoc} */
     public function process()
     {
-        $fid = $this->getProperty('fid');
-        if (!$fid) {
-            return $this->failure('');
-        }
-
-        $q = $this->modx->newQuery($this->classKey);
-        $q->command('DELETE');
-        $q->where(array('fid' => $fid));
-        $q->prepare();
-        $q->stmt->execute();
+        $this->modx->call('modClassVarField', 'removeSection', array(&$this->modx, $this->getProperty('fid', 0)));
 
         return $this->success('');
     }

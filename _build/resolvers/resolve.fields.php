@@ -16,9 +16,13 @@ switch ($options[xPDOTransport::PACKAGE_ACTION]) {
         /* modClassVarField */
         $fields = array(
             array(
-                'key'  => 'bool',
-                'name' => 'булево',
-                'type' => 'modx-combo-boolean',
+                'key'     => 'bool',
+                'name'    => 'булево',
+                'type'    => 'modx-combo-boolean',
+                'section' => array(
+                    'секция 1',
+                    'секция 2'
+                )
             ),
             array(
                 'key'  => 'desc',
@@ -30,7 +34,7 @@ switch ($options[xPDOTransport::PACKAGE_ACTION]) {
                 'name' => 'Теги',
                 'type' => 'modclassvar-combo-option',
             ),
-            array(
+            /*array(
                 'key'  => 'brand',
                 'name' => 'Бренд',
                 'type' => 'modclassvar-combo-autocomplete',
@@ -71,7 +75,7 @@ switch ($options[xPDOTransport::PACKAGE_ACTION]) {
                 'key'  => 'resource',
                 'name' => 'Ресурс',
                 'type' => 'modclassvar-combo-resource',
-            ),
+            ),*/
 
         );
 

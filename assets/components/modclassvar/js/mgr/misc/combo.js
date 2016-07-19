@@ -506,6 +506,7 @@ modclassvar.combo.Section = function (config) {
 			this.clearValue();
 		}
 	});
+	
 	modclassvar.combo.Section.superclass.constructor.call(this, config);
 };
 Ext.extend(modclassvar.combo.Section, MODx.combo.ComboBox);

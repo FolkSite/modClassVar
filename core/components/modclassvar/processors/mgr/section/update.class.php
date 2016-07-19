@@ -19,35 +19,14 @@ class modClassVarSectionUpdateProcessor extends modObjectProcessor
             case !$fid OR !$mode:
                 return $this->failure('');
             case $mode == self::MODE_ADD:
-                $this->addOption($fid, $name);
+                $this->modx->call('modClassVarField', 'saveSection', array(&$this->modx, $fid, $name));
                 break;
             case $mode == self::MODE_REMOVE:
-                $this->removeOption($fid, $name);
+                $this->modx->call('modClassVarField', 'removeSection', array(&$this->modx, $fid, $name));
                 break;
         }
 
         return $this->success('');
-    }
-
-    /** {@inheritDoc} */
-    public function addOption($fid = 0, $name = 0)
-    {
-        if ($fid AND $name) {
-            $sql = "INSERT INTO {$this->modx->getTableName($this->classKey)} (`fid`,`name`) VALUES ('$fid','$name');";
-            $this->modx->exec($sql);
-        }
-    }
-
-    /** {@inheritDoc} */
-    public function removeOption($fid = 0, $name = 0)
-    {
-        if ($fid AND $name) {
-            $q = $this->modx->newQuery($this->classKey);
-            $q->command('DELETE');
-            $q->where(array('fid' => $fid, 'name' => $name));
-            $q->prepare();
-            $q->stmt->execute();
-        }
     }
 
 }

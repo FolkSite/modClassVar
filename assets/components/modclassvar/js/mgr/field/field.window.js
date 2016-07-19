@@ -336,6 +336,7 @@ Ext.extend(modclassvar.window.FieldUpdate, MODx.Window, {
     submit: function(close) {
         close = close === false ? false : true;
         var f = this.fp.getForm();
+
         if (f.isValid() && this.fireEvent('beforeSubmit',f.getValues())) {
             f.submit({
                 waitMsg: _('saving')
