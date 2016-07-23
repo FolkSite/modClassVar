@@ -8,7 +8,7 @@
 
 При использовании пакета *pdoTools* и *Fenom*
 ```
-{var $data = $.mcv->getValues('', $_modx->resource.id)}
+{var $data = $.mcv->getValues($_modx->resource.id)}
 {$data.google_place}
 ```
 
@@ -22,7 +22,7 @@ if (!$mcv = $modx->getService('modClassVar')) {
 }
 
 $rid = 1;
-$values = $mcv->getValues('', $rid);
+$values = $mcv->getValues($rid);
 $values = array_merge($values,array(
     'desc' => 'описание'
 ));
@@ -45,7 +45,7 @@ if (!$mcv = $modx->getService('modClassVar')) {
 }
 
 $rid = 1;
-$values = $mcv->getValues('', $rid);
+$values = $mcv->getValues($rid);
 $values = array_merge($values,array(
     'desc' => 'описание'
 ));
@@ -68,9 +68,9 @@ switch ($modx->event->name) {
         return;
     }
 
-	if (!$mcv = $modx->getService('modClassVar')) {
-    	return false;
-	}
+    if (!$mcv = $modx->getService('modClassVar')) {
+        return false;
+    }
     $fenom->mcv = $mcv;
     $fenom->addAccessorSmart("mcv", "mcv", Fenom::ACCESSOR_PROPERTY);
 

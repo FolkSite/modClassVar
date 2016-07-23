@@ -11,7 +11,7 @@ class modClassVarOnLoadWebDocument extends modClassVarPlugin
             return;
         }
 
-        $data = $this->modclassvar->getValues('modResource', $this->modx->resource->get('id'), null, true, '');
+        $data = $this->modclassvar->getValues($this->modx->resource->id, 'modResource', null, true, '');
         $this->modx->setPlaceholders($data);
     }
 }

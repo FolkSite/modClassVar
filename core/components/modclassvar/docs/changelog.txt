@@ -1,5 +1,9 @@
 Changelog for modclassvar
 
+1.0.7-beta (23.07.2016)
+==============
+- Improvement "getValues"
+
 1.0.6-beta (19.07.2016)
 ==============
 - Improvement "section"

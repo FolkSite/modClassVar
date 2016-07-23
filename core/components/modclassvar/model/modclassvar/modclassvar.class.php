@@ -372,10 +372,15 @@ class modclassvar
      *
      * @return mixed|null
      */
-    public function getValues($class = 'modResource', $cid = 0, $key = null, $process = false, $prefix = null)
+    public function getValues($cid = 0, $class = 'modResource', $key = null, $process = false, $prefix = null)
     {
-        if (empty($class)) {
-            $class = 'modResource';
+        switch (true) {
+            case empty($cid) AND $class == 'modResource':
+                $cid = $this->modx->resource->id;
+                break;
+            case empty($cid) AND $class == 'modUser':
+                $cid = $this->modx->user->id;
+                break;
         }
 
         switch (true) {
