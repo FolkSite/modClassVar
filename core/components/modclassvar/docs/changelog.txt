@@ -1,5 +1,9 @@
 Changelog for modclassvar
 
+1.0.9-beta (31.07.2016)
+==============
+- Add "priority" to plugins
+
 1.0.8-beta (31.07.2016)
 ==============
 - Change "prefix_key"

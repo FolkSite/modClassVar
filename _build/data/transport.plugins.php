@@ -7,12 +7,12 @@ $tmp = array(
         'file'        => 'modclassvar',
         'description' => '',
         'events'      => array(
-            'OnDocFormPrerender'  => array(),
-            'OnDocFormSave'       => array(),
-            'OnEmptyTrash'        => array(),
-            'OnLoadWebDocument'   => array(),
-            'OnUserFormPrerender' => array(),
-            'OnUserFormSave'      => array(),
+            'OnDocFormPrerender'  => array('priority' => 100),
+            'OnDocFormSave'       => array('priority' => 100),
+            'OnEmptyTrash'        => array('priority' => 100),
+            'OnLoadWebDocument'   => array('priority' => 100),
+            'OnUserFormPrerender' => array('priority' => 100),
+            'OnUserFormSave'      => array('priority' => 100),
         )
     )
 
