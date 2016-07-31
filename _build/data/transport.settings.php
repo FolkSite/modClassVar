@@ -26,7 +26,7 @@ $tmp = array(
         'area'  => 'modclassvar_main',
     ),
     'prefix_key'         => array(
-        'value' => 'modclassvar.',
+        'value' => 'modclassvar_',
         'xtype' => 'textfield',
         'area'  => 'modclassvar_main',
     ),

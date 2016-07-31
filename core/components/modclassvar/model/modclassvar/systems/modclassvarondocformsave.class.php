@@ -15,8 +15,8 @@ class modClassVarOnDocFormSave extends modClassVarPlugin
         }
 
         $data = $resource->toArray();
-        $prefix = $this->modclassvar->getOption('prefix_key', null, 'modclassvar.', true);
-        $values = $this->modx->getOption(rtrim($prefix, '.'), $data, array(), true);
+        $prefix = $this->modclassvar->getOption('prefix_key', null, 'modclassvar_', true);
+        $values = $this->modx->getOption(rtrim($prefix, '_'), $data, array(), true);
 
         foreach ($data as $k => $v) {
             if (strpos($k, $prefix) !== false) {
