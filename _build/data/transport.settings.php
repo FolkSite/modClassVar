@@ -30,7 +30,12 @@ $tmp = array(
         'xtype' => 'textfield',
         'area'  => 'modclassvar_main',
     ),
-
+    'source_default'     => array(
+        'value' => '0',
+        'xtype' => 'modx-combo-source',
+        'area'  => 'modclassvar_main',
+    ),
+    
     'force_script_ymaps' => array(
         'xtype' => 'combo-boolean',
         'value' => true,

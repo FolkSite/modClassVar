@@ -18,6 +18,9 @@ $_lang['setting_modclassvar_field_prefix_desc'] = 'Префикс плейсхо
 $_lang['setting_modclassvar_prefix_key'] = 'Префикс переменной';
 $_lang['setting_modclassvar_prefix_key_desc'] = 'Префикс переменной. Переменные с префиксом будут автоматически сохранены при сохранении ресурса или пользователя.';
 
+$_lang['setting_modclassvar_source_default'] = 'Источник медиа для modClassVar';
+$_lang['setting_modclassvar_source_default_desc'] = 'Выберите источник медиа, который будет использован по умолчанию для загрузки файлов пользователя.';
+
 $_lang['setting_modclassvar_force_script_ymaps'] = 'Загрузка скрипта ymaps';
 $_lang['setting_modclassvar_force_script_ymaps_desc'] = 'Преждевременная загрузка скриптов Yandex maps.';
 
@@ -29,3 +32,4 @@ $_lang['setting_modclassvar_script_ymaps_desc'] = 'Путь к скрипту Ya
 
 $_lang['setting_modclassvar_script_gmaps'] = 'Скрипт gmaps';
 $_lang['setting_modclassvar_script_gmaps_desc'] = 'Путь к скрипту Google maps.';
+

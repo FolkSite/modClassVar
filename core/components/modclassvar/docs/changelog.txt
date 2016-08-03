@@ -1,5 +1,9 @@
 Changelog for modclassvar
 
+1.1.0-beta (03.08.2016)
+==============
+- Add "source"
+
 1.0.9-beta (31.07.2016)
 ==============
 - Add "priority" to plugins
