@@ -1,3 +1,18 @@
+Ext.override(Ext.Component, {
+	findParentByType: function(type){
+		if (Ext.isFunction(type)){
+			return this.findParentBy(function(p){
+				return p instanceof type;
+			});
+		} else {
+			return (Ext.isFunction(Ext.ComponentMgr.types[type]))?
+				this.findParentByType(Ext.ComponentMgr.types[type]):
+				null;
+		}
+	}
+});
+
+
 modclassvar.panel.Variable = function (config) {
 	config = config || {};
 
@@ -192,9 +207,9 @@ modclassvar.panel.Variable = function (config) {
 						listeners: {
 							success: {
 								fn: function (r) {
-									var f = this.findParentByType('form').getForm();
-									if (r.object) {
-										f.setValues({modclassvar: r.object.modclassvar});
+									var f = this.findParentByType('form');
+									if (f && r.object) {
+										f.getForm().setValues({modclassvar: r.object.modclassvar});
 									}
 								},
 								scope: this
