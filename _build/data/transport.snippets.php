@@ -3,8 +3,8 @@
 $snippets = array();
 
 $tmp = array(
-    'modclassvar' => array(
-        'file'        => 'modclassvar',
+    'modClassVar.wrapper' => array(
+        'file'        => 'modclassvar.wrapper',
         'description' => '',
     ),
 );
