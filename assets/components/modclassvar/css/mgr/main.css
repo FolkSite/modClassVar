@@ -245,7 +245,7 @@ span.modclassvar-grid-color {
 	overflow: overlay;
 }
 .modclassvar-panel-variable .modclassvar-variable-field-tab .modclassvar-file-thumb {
-	width: 100%;
+	_width: 100%;
 }
 
 /* modclassvar-ymaps-place */
