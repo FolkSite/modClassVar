@@ -3,27 +3,31 @@
 $properties = array();
 
 $tmp = array(
-    'tpl'           => array(
+    'tpl'            => array(
         'type'  => 'textfield',
         'value' => '',
     ),
-    'class'         => array(
+    'class'          => array(
         'type'  => 'textfield',
         'value' => 'modResource',
     ),
-    'leftJoinVars'  => array(
+    'leftJoinVars'   => array(
         'type'  => 'textfield',
         'value' => '',
     ),
-    'innerJoinVars' => array(
+    'innerJoinVars'  => array(
         'type'  => 'textfield',
         'value' => '',
     ),
-    'whereVars'     => array(
+    'whereVars'      => array(
         'type'  => 'textfield',
         'value' => '',
     ),
-    'element'       => array(
+    'includeField'   => array(
+        'type'  => 'combo-boolean',
+        'value' => false,
+    ),
+    'element'        => array(
         'type'  => 'textfield',
         'value' => 'pdoResources',
     ),

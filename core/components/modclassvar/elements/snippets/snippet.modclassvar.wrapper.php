@@ -15,6 +15,9 @@ $tpl = $scriptProperties['tpl'] = $modx->getOption('tpl', $scriptProperties, '',
 $parents = $scriptProperties['parents'] = $modx->getOption('parents', $scriptProperties, $modx->resource->id, true);
 $class = $scriptProperties['class'] = $modx->getOption('class', $scriptProperties, 'modResource', true);
 $return = $scriptProperties['return'] = $modx->getOption('return', $scriptProperties, 'chunks', true);
+$includeField = $scriptProperties['includeField'] = (bool)$modx->getOption('includeField', $scriptProperties, 0, true);
+
+$element = $scriptProperties['element'] = $modx->getOption('element', $scriptProperties, 'pdoResources', true);
 if (isset($this) AND $this instanceof modSnippet AND $element == $this->get('name')) {
     $properties = $this->getProperties();
     $element = $scriptProperties['element'] = $modx->getOption('element', $properties, 'pdoResources', true);
@@ -23,6 +26,8 @@ if (isset($this) AND $this instanceof modSnippet AND $element == $this->get('nam
 $where = array();
 $leftJoin = array();
 $innerJoin = array();
+$leftJoinVars = array();
+$innerJoinVars = array();
 $select = array(
     $class => "{$class}.*"
 );
@@ -44,27 +49,28 @@ foreach (array('where', 'leftJoin', 'innerJoin', 'select', 'groupby') as $v) {
     unset($scriptProperties[$v]);
 }
 
-// leftJoin vars
-$leftJoinVars = $modclassvar->explodeAndClean($scriptProperties['leftJoinVars']);
-foreach ($leftJoinVars as $var) {
-    $leftJoin[$var] = array(
-        'class' => 'modClassVarValues',
-        'on'    => "`{$var}`.class = '{$class}' AND `{$var}`.cid = `{$class}`.id AND `{$var}`.key = '{$var}'",
-    );
-    $select[$var] = "`{$var}`.value as {$var}_value";
+// join vars
+foreach (array('leftJoinVars' => 'leftJoin', 'innerJoinVars' => 'innerJoin') as $k => $v) {
+    if (!empty($scriptProperties[$k])) {
+        ${$k} = $modclassvar->explodeAndClean($scriptProperties[$k]);
+        foreach (${$k} as $var) {
+            ${$v}[$var] = array(
+                'class' => 'modClassVarValues',
+                'on'    => "`{$var}`.class = '{$class}' AND `{$var}`.cid = `{$class}`.id AND `{$var}`.key = '{$var}'",
+            );
+            $select[$var] = "`{$var}`.value as {$var}_value";
+            if ($includeField) {
+                $field = $var . '_';
+                ${$v}[$field] = array(
+                    'class' => 'modClassVarField',
+                    'on'    => "`{$field}`.key = '{$var}'",
+                );
+                $select[$field] = $modx->getSelectColumns('modClassVarField', $field, $field);
+            }
+        }
+    }
+    unset($scriptProperties[$v]);
 }
-
-// innerJoin vars
-$innerJoinVars = $modclassvar->explodeAndClean($scriptProperties['innerJoinVars']);
-foreach ($innerJoinVars as $var) {
-    $innerJoin[$var] = array(
-        'class' => 'modClassVarValues',
-        'on'    => "`{$var}`.class = '{$class}' AND `{$var}`.cid = `{$class}`.id AND `{$var}`.key = '{$var}'",
-    );
-    $select[$var] = "`{$var}`.value as {$var}_value";
-}
-
-/* TODO add modClassVarField*/
 
 // where vars
 if (!empty($scriptProperties['whereVars'])) {
