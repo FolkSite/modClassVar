@@ -1538,7 +1538,7 @@ modclassvar.combo.Resource = function(config) {
 	Ext.applyIf(config, {
 		name: config.name || 'resource',
 		hiddenName: config.name || 'resource',
-		displayField: 'pagetitle',
+		displayField: config.displayField || 'pagetitle',
 		valueField: 'id',
 		editable: true,
 		fields: ['pagetitle', 'id'],
@@ -1595,7 +1595,18 @@ modclassvar.combo.Resources = function (config) {
 	Ext.applyIf(config, {
 		xtype: 'superboxselect',
 		name: config.name || 'resources',
-		displayField: config.displayField || 'pagetitle',
+		/*displayField: config.displayField || 'pagetitle',*/
+
+		displayField: config.displayField || '<small>({id})</small> {pagetitle}',
+		displayFieldTpl: config.displayFieldTpl || '<small>({id})</small> {pagetitle}',
+		tpl: new Ext.XTemplate(
+			'<tpl for="."><div class="x-combo-list-item">',
+			'<small>({id})</small> <b>{pagetitle}</b>',
+			'</div></tpl>',
+			{
+				compiled: true
+			}),
+
 		valueField: config.valueField || 'id',
 		minChars: config.minChars || 1,
 		valueDelimiter: config.valueDelimiter || '||',
@@ -1619,6 +1630,7 @@ modclassvar.combo.Resources = function (config) {
 				combo: true,
 			}
 		}),
+
 		mode: 'remote',
 		triggerAction: 'all',
 		extraItemCls: 'x-tag',
@@ -1688,7 +1700,7 @@ modclassvar.combo.User = function(config) {
 	Ext.applyIf(config, {
 		name: config.name || 'user',
 		hiddenName: config.name || 'user',
-		displayField: 'username',
+		displayField: config.displayField || 'username',
 		valueField: 'id',
 		editable: true,
 		fields: ['username', 'id'],
@@ -1745,7 +1757,18 @@ modclassvar.combo.Users = function (config) {
 	Ext.applyIf(config, {
 		xtype: 'superboxselect',
 		name: config.name || 'users',
-		displayField: config.displayField || 'username',
+		/*displayField: config.displayField || 'username',*/
+
+		displayField: config.displayField || '<small>({id})</small> {username}',
+		displayFieldTpl: config.displayFieldTpl || '<small>({id})</small> {username}',
+		tpl: new Ext.XTemplate(
+			'<tpl for="."><div class="x-combo-list-item">',
+			'<small>({id})</small> <b>{username}</b>',
+			'</div></tpl>',
+			{
+				compiled: true
+			}),
+
 		valueField: config.valueField || 'id',
 		minChars: config.minChars || 1,
 		valueDelimiter: config.valueDelimiter || '||',

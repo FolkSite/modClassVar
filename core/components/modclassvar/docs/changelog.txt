@@ -1,5 +1,9 @@
 Changelog for modclassvar
 
+1.1.5-beta (22.09.2016)
+==============
+- Improvement "modclassvar-combo-resources", "modclassvar-combo-users"
+
 1.1.4-beta (17.09.2016)
 ==============
 - Improvement "modClassVar.wrapper" snippet
