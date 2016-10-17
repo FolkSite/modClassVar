@@ -36,6 +36,7 @@ class modClassVarFieldGetListProcessor extends modObjectGetListProcessor
         }
 
         $c->leftJoin($this->classSection, $this->classSection, "{$this->classKey}.id = {$this->classSection}.fid");
+        $c->select($this->modx->getSelectColumns($this->classSection, $this->classSection, 'section_'));
 
         $cid = $this->getProperty('cid');
         if (!in_array($cid, array(null, '0'))) {

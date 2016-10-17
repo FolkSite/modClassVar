@@ -1,5 +1,9 @@
 Changelog for modclassvar
 
+1.1.6-beta (17.10.2016)
+==============
+- Add "section_name" to combobox
+
 1.1.5-beta (22.09.2016)
 ==============
 - Improvement "modclassvar-combo-resources", "modclassvar-combo-users"

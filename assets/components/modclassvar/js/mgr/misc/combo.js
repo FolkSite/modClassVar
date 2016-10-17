@@ -107,7 +107,7 @@ modclassvar.combo.Field = function (config) {
 		displayField: 'name',
 		valueField: 'id',
 		editable: true,
-		fields: ['id', 'key', 'name'],
+		fields: ['id', 'key', 'name', 'section_name'],
 		pageSize: 10,
 		emptyText: _('modclassvar_combo_select'),
 		hideMode: 'offsets',
@@ -123,9 +123,12 @@ modclassvar.combo.Field = function (config) {
 		},
 		tpl: new Ext.XTemplate(
 			'<tpl for="."><div class="x-combo-list-item">',
-			'<small>({id})</small> <b>{key}</b>',
+			'<b>{key}</b> ',
 			'<tpl if="name">',
-			'<br/><small>{name}</small>',
+			'<small>{name}</small>',
+			'</tpl>',
+			'<tpl if="section_name">',
+			'<br/><small>({section_name})</small> ',
 			'</tpl>',
 			'</div></tpl>',
 			{
