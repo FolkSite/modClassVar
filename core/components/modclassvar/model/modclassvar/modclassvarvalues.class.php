@@ -26,6 +26,7 @@ class modClassVarValues extends xPDOObject
         $q->select("GROUP_CONCAT(`{$classSection}`.`name` SEPARATOR ',') as `section_name`");
 
         $q->groupby("{$classValue}.value");
+        $q->sortby("{$classField}.rank", "ASC");
 
         if ($class) {
             $q->where(array(
