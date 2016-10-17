@@ -1,5 +1,9 @@
 Changelog for modclassvar
 
+1.1.8-beta (17.10.2016)
+==============
+- Add "group" to "getValues"
+
 1.1.7-beta (17.10.2016)
 ==============
 - Add filter "variable" by "section"

@@ -3,17 +3,30 @@
 class modClassVarValues extends xPDOObject
 {
 
-    public static function getValues(xPDO & $xpdo, $class = 'modResource', $cid = 0, $key = null, $process = true, $prefix = '')
-    {
-        $values = array();
+    public static function getValues(
+        xPDO & $xpdo,
+        $class = 'modResource',
+        $cid = 0,
+        $key = null,
+        $process = true,
+        $prefix = '',
+        $group = false
+    ) {
+        $values = $properties = $sections = array();
         $classValue = 'modClassVarValues';
         $classField = 'modClassVarField';
+        $classSection = 'modClassVarSection';
 
         $q = $xpdo->newQuery($classField);
         $q->leftJoin($classValue, $classValue, "{$classField}.key={$classValue}.key AND {$classValue}.cid = {$cid}");
+        $q->leftJoin($classSection, $classSection, "{$classField}.id={$classSection}.fid");
+
         $q->select($xpdo->getSelectColumns($classField, $classField));
         $q->select($xpdo->getSelectColumns($classValue, $classValue));
-        
+        $q->select("GROUP_CONCAT(`{$classSection}`.`name` SEPARATOR ',') as `section_name`");
+
+        $q->groupby("{$classValue}.value");
+
         if ($class) {
             $q->where(array(
                 "{$classValue}.class" => "{$class}"
@@ -25,9 +38,15 @@ class modClassVarValues extends xPDOObject
                 "{$classValue}.key" => "{$key}"
             ));
         }
-        
+
         if ($q->prepare() AND $q->stmt->execute()) {
             while ($row = $q->stmt->fetch(PDO::FETCH_ASSOC)) {
+
+                if (empty($row['section_name'])) {
+                    $row['section_name'] = 'empty';
+                }
+                $section = array_map('trim', explode(',', $row['section_name']));
+
                 $k = $prefix . $row['key'];
                 if (isset($values[$k])) {
                     if (!is_array($values[$k])) {
@@ -38,16 +57,27 @@ class modClassVarValues extends xPDOObject
                     $values[$k] = $row['value'];
                 }
 
-                if ($process) {
+                if ($process AND !isset($properties[$k])) {
                     foreach ($row as $x => $value) {
-                        $values[$k . '.' . $x] = $value;
+                        $properties[$k][$x] = $values[$k . '.' . $x] = $value;
                     }
                 }
+
+                if ($group) {
+                    foreach ($section as $v) {
+                        $sections[$v][$k] = $properties[$k];
+                        $sections[$v][$k]['value'] = $values[$k];
+                    }
+                }
+
             }
         }
 
         if ($key AND !$process) {
-            $values = $xpdo->getOption($key, $values, '', true);
+            $values = isset($values[$key]) ? $values[$key] : '';
+        }
+        if ($group) {
+            $values = $sections;
         }
 
         return $values;
