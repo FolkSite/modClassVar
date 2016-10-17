@@ -473,6 +473,7 @@ Ext.extend(modclassvar.panel.Variable, MODx.Panel, {
 				cls: 'modclassvar-padding-fix',
 				items: [{
 					xtype: 'modclassvar-combo-field',
+					id: 'modclassvar_option',
 					name: 'option',
 					emptyText: _('modclassvar_var'),
 					width: 200,
@@ -706,6 +707,19 @@ Ext.extend(modclassvar.panel.Variable, MODx.Panel, {
 	},
 
 	_filterByCombo: function (cb) {
+
+		if (cb.name == 'section') {
+			var comboOption = Ext.getCmp('modclassvar_option');
+
+			if (comboOption) {
+				comboOption.baseParams.section = cb.getValue();
+				if (!!comboOption.pageTb) {
+					comboOption.pageTb.show();
+				}
+				comboOption.store.load();
+			}
+		}
+
 		this.grid.getStore().baseParams[cb.name] = cb.value;
 		this.grid.getBottomToolbar().changePage(1);
 	},
