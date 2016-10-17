@@ -20,10 +20,15 @@ class modClassVarAutoCompleteProcessor extends modObjectProcessor
         $q->limit(0);
         $q->where(array(
             "{$classKey}.class"    => "{$class}",
-            "{$classKey}.cid"      => "{$cid}",
             "{$classKey}.key"      => "{$key}",
             "{$classKey}.value:!=" => "",
         ));
+
+        if (!empty($cid)) {
+            $q->andCondition(array(
+                "{$classKey}.cid"      => "{$cid}",
+            ));
+        }
 
         $query = $this->getProperty('query');
         if (!empty($query)) {
