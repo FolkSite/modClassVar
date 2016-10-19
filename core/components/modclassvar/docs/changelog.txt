@@ -1,5 +1,9 @@
 Changelog for modclassvar
 
+1.1.9-beta (17.10.2016)
+==============
+- Fix "option" getlist.class.php
+
 1.1.8-beta (17.10.2016)
 ==============
 - Add "group" to "getValues"

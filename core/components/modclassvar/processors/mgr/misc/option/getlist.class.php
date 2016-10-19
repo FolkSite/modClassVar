@@ -10,7 +10,6 @@ class modClassVarOptionProcessor extends modObjectProcessor
         $classKey = 'modClassVarValues';
 
         $class = $this->getProperty('class');
-        $cid = $this->getProperty('cid');
         $key = $this->getProperty('key');
 
         $q = $this->modx->newQuery($classKey);
@@ -20,13 +19,19 @@ class modClassVarOptionProcessor extends modObjectProcessor
         $q->limit(0);
         $q->where(array(
             "{$classKey}.class"    => "{$class}",
-            "{$classKey}.cid"      => "{$cid}",
             "{$classKey}.key"      => "{$key}",
             "{$classKey}.value:!=" => "",
         ));
 
-        $query = $this->getProperty('query');
-        if (!empty($query)) {
+        $cid = (int)$this->getProperty('cid');
+        if ($cid) {
+            $q->andCondition(array(
+                "{$classKey}.cid" => "{$cid}",
+            ));
+        }
+
+        $query = trim($this->getProperty('query'));
+        if ($query) {
             $pf = '|';
             if (strpos($query, $pf) !== false) {
                 $query = explode($pf, $query);
