@@ -23,12 +23,12 @@ class modClassVarOptionProcessor extends modObjectProcessor
             "{$classKey}.value:!=" => "",
         ));
 
-        $cid = (int)$this->getProperty('cid');
+       /* $cid = (int)$this->getProperty('cid');
         if ($cid) {
             $q->andCondition(array(
                 "{$classKey}.cid" => "{$cid}",
             ));
-        }
+        }*/
 
         $query = trim($this->getProperty('query'));
         if ($query) {

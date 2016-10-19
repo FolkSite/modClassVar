@@ -300,6 +300,8 @@ Ext.extend(modclassvar.panel.Variable, MODx.Panel, {
 		}
 
 		var cnf = Ext.util.JSON.decode(record.json['config'] || '{}');
+
+		/** */
 		Ext.applyIf(cnf, {
 			xtype: record.json['type'],
 			class: this.config.class || 'modResource',
