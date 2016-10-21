@@ -8,7 +8,7 @@ modclassvar.grid.Field = function (config) {
 			'<tpl for=".">',
 
 			'<table class="modclassvar-expander"><tbody>',
-
+			
 			'<tpl if="description">',
 			'<tr>',
 			'<td><b>' + _('modclassvar_description') + ': </b>{description}</td>',

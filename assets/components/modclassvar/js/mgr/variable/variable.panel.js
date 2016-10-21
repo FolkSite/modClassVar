@@ -78,6 +78,7 @@ modclassvar.panel.Variable = function (config) {
 							}
 							tmp = [];
 						}
+
 					}
 
 					return values.join('');

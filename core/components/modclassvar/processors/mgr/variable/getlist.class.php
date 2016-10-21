@@ -117,9 +117,10 @@ class modClassVarValuesGetListProcessor extends modObjectGetListProcessor
                 'menu'   => true,
             );
 
+            $prefix = $this->modx->getOption('modclassvar_field_prefix', null, 'modclassvar.', true);
             /* get values */
             $data = $this->modx->call('modClassVarValues', 'getValues',
-                array(&$this->modx, $array['class'], (int)$array['cid'], $array['key']));
+                array(&$this->modx, $array['class'], (int)$array['cid'], $array['key'], true, $prefix));
             $array = array_merge($array, $data);
 
         }

@@ -1,5 +1,10 @@
 Changelog for modclassvar
 
+1.1.10-beta (21.10.2016)
+==============
+- Fix get "config"
+- Fix render "values"
+
 1.1.9-beta (17.10.2016)
 ==============
 - Fix "option" getlist.class.php

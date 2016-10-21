@@ -255,9 +255,12 @@ class modclassvar
         foreach (array('resource', 'user') as $key) {
             if (isset($config[$key]) AND is_object($config[$key]) AND $config[$key] instanceof xPDOObject) {
                 /** @var $config xPDOObject[] */
-                $config[$key] = $config[$key]->toArray();
+                $row = $config[$key]->toArray();
+                unset($config[$key]);
+                $config[$key] = $row;
             }
         }
+        
         if (isset($config['user'])) {
             $config['working_groups'] = $this->getUserGroups($config['user']['id']);
         }
