@@ -7,6 +7,18 @@ class modClassVarResourceGetListProcessor extends modObjectGetListProcessor
     public $languageTopics = array('resource');
     public $defaultSortField = 'pagetitle';
 
+
+    /** @var modclassvar $modclassvar */
+    public $modclassvar;
+
+    public function initialize()
+    {
+        $this->modclassvar = $this->modx->getService('modclassvar');
+        $this->modclassvar->initialize($this->getProperty('context', $this->modx->context->key));
+
+        return parent::initialize();
+    }
+
     /** {@inheritDoc} */
     public function prepareQueryBeforeCount(xPDOQuery $c)
     {
@@ -42,6 +54,13 @@ class modClassVarResourceGetListProcessor extends modObjectGetListProcessor
             $ids = array_merge_recursive(array($id), $ids);
             $c->where(array(
                 "{$this->classKey}.id:IN" => $ids
+            ));
+        }
+
+        $template = $this->modclassvar->explodeAndClean($this->getProperty('template'));
+        if (!empty($template)) {
+            $c->andCondition(array(
+                "{$this->classKey}.template:IN" => $template,
             ));
         }
 

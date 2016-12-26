@@ -312,6 +312,8 @@ Ext.extend(modclassvar.panel.Variable, MODx.Panel, {
 			hiddenName: 'modclassvar',
 		});
 
+		console.log(cnf);
+
 		field.push(cnf);
 
 		return field;

@@ -1,5 +1,10 @@
 Changelog for modclassvar
 
+1.1.11-beta (26.12.2016)
+==============
+- Fix "config baseParams" combo
+- Add "template" to "resource" getlist
+
 1.1.10-beta (21.10.2016)
 ==============
 - Fix get "config"

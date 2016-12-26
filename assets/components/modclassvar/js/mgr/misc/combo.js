@@ -547,6 +547,16 @@ Ext.reg('modclassvar-combo-datetime', modclassvar.combo.DateTime);
 modclassvar.combo.AutoComplete = function (config) {
 	config = config || {};
 
+	config.baseParams = config.baseParams || {};
+	Ext.apply(config.baseParams, {
+		action: 'mgr/misc/autocomplete/getlist',
+		combo: true,
+		key: config.key || 'key',
+		class: config.class || '',
+		addall: config.addall || 0,
+		novalue: config.novalue || 0,
+	});
+
 	if (config.custm) {
 		config.triggerConfig = [{
 			tag: 'div',
@@ -605,14 +615,7 @@ modclassvar.combo.AutoComplete = function (config) {
 		emptyText: _('modclassvar_combo_select'),
 		hideMode: 'offsets',
 		url: modclassvar.config.connector_url,
-		baseParams: {
-			action: 'mgr/misc/autocomplete/getlist',
-			combo: true,
-			key: config.key || 'key',
-			class: config.class || '',
-			addall: config.addall || 0,
-			novalue: config.novalue || 0,
-		},
+		baseParams: config.baseParams,
 		tpl: new Ext.XTemplate(
 			'<tpl for="."><div class="x-combo-list-item">',
 			'{value}',
@@ -654,6 +657,15 @@ Ext.reg('modclassvar-combo-autocomplete', modclassvar.combo.AutoComplete);
 modclassvar.combo.Option = function (config) {
 	config = config || {};
 
+	config.baseParams = config.baseParams || {};
+	Ext.apply(config.baseParams, {
+		action: 'mgr/misc/option/getlist',
+		combo: true,
+		class: config.class || '',
+		key: config.key || 'key',
+		cid: config.cid || 0,
+	});
+
 	Ext.applyIf(config, {
 		xtype: 'superboxselect',
 		name: config.name || 'option',
@@ -676,13 +688,7 @@ modclassvar.combo.Option = function (config) {
 			totalProperty: 'total',
 			fields: ['value'],
 			url: modclassvar.config.connector_url,
-			baseParams: {
-				action: 'mgr/misc/option/getlist',
-				combo: true,
-				class: config.class || '',
-				key: config.key || 'key',
-				cid: config.cid || 0,
-			}
+			baseParams: config.baseParams
 		}),
 		mode: 'remote',
 		triggerAction: 'all',
@@ -1493,6 +1499,12 @@ Ext.reg('modclassvar-combo-gmaps-place', modclassvar.combo.GmapsPlace);
 modclassvar.combo.Resource = function(config) {
 	config = config || {};
 
+	config.baseParams = config.baseParams || {};
+	Ext.apply(config.baseParams, {
+		action: 'mgr/misc/resource/getlist',
+		combo: true
+	});
+
 	if (config.custm) {
 		config.triggerConfig = [{
 			tag: 'div',
@@ -1550,10 +1562,7 @@ modclassvar.combo.Resource = function(config) {
 		emptyText: _('modclassvar_combo_select'),
 		hideMode: 'offsets',
 		url: modclassvar.config.connector_url,
-		baseParams: {
-			action: 'mgr/misc/resource/getlist',
-			combo: true
-		},
+		baseParams: config.baseParams,
 		tpl: new Ext.XTemplate(
 			'<tpl for="."><div class="x-combo-list-item">',
 			'<small>({id})</small> <b>{pagetitle}</b>',
@@ -1596,6 +1605,12 @@ Ext.reg('modclassvar-combo-resource', modclassvar.combo.Resource);
 modclassvar.combo.Resources = function (config) {
 	config = config || {};
 
+	config.baseParams = config.baseParams || {};
+	Ext.apply(config.baseParams, {
+		action: 'mgr/misc/resource/getlist',
+		combo: true,
+	});
+
 	Ext.applyIf(config, {
 		xtype: 'superboxselect',
 		name: config.name || 'resources',
@@ -1629,10 +1644,7 @@ modclassvar.combo.Resources = function (config) {
 			totalProperty: 'total',
 			fields: ['pagetitle', 'id'],
 			url: modclassvar.config.connector_url,
-			baseParams: {
-				action: 'mgr/misc/resource/getlist',
-				combo: true,
-			}
+			baseParams: config.baseParams
 		}),
 
 		mode: 'remote',
@@ -1654,6 +1666,12 @@ Ext.reg('modclassvar-combo-resources', modclassvar.combo.Resources);
 
 modclassvar.combo.User = function(config) {
 	config = config || {};
+
+	config.baseParams = config.baseParams || {};
+	Ext.apply(config.baseParams, {
+		action: 'mgr/misc/user/getlist',
+		combo: true
+	});
 
 	if (config.custm) {
 		config.triggerConfig = [{
@@ -1712,10 +1730,7 @@ modclassvar.combo.User = function(config) {
 		emptyText: _('modclassvar_combo_select'),
 		hideMode: 'offsets',
 		url: modclassvar.config.connector_url,
-		baseParams: {
-			action: 'mgr/misc/user/getlist',
-			combo: true
-		},
+		baseParams: config.baseParams,
 		tpl: new Ext.XTemplate(
 			'<tpl for="."><div class="x-combo-list-item">',
 			'<small>({id})</small> <b>{username}</b>',
@@ -1758,6 +1773,12 @@ Ext.reg('modclassvar-combo-user', modclassvar.combo.User);
 modclassvar.combo.Users = function (config) {
 	config = config || {};
 
+	config.baseParams = config.baseParams || {};
+	Ext.apply(config.baseParams, {
+		action: 'mgr/misc/user/getlist',
+		combo: true,
+	});
+
 	Ext.applyIf(config, {
 		xtype: 'superboxselect',
 		name: config.name || 'users',
@@ -1791,10 +1812,7 @@ modclassvar.combo.Users = function (config) {
 			totalProperty: 'total',
 			fields: ['username', 'id'],
 			url: modclassvar.config.connector_url,
-			baseParams: {
-				action: 'mgr/misc/user/getlist',
-				combo: true,
-			}
+			baseParams: config.baseParams
 		}),
 		mode: 'remote',
 		triggerAction: 'all',
@@ -1816,6 +1834,12 @@ Ext.reg('modclassvar-combo-users', modclassvar.combo.Users);
 
 modclassvar.combo.Chunk = function(config) {
 	config = config || {};
+
+	config.baseParams = config.baseParams || {};
+	Ext.apply(config.baseParams, {
+		action: 'mgr/misc/chunk/getlist',
+		combo: true,
+	});
 
 	if (config.custm) {
 		config.triggerConfig = [{
@@ -1874,10 +1898,7 @@ modclassvar.combo.Chunk = function(config) {
 		emptyText: _('modclassvar_combo_select'),
 		hideMode: 'offsets',
 		url: modclassvar.config.connector_url,
-		baseParams: {
-			action: 'mgr/misc/chunk/getlist',
-			combo: true,
-		},
+		baseParams: config.baseParams ,
 		tpl: new Ext.XTemplate(
 			'<tpl for="."><div class="x-combo-list-item">',
 			'<small>({id})</small> <b>{name}</b>',
