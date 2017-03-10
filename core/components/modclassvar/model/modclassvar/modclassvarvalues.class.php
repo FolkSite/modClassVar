@@ -25,7 +25,7 @@ class modClassVarValues extends xPDOObject
         $q->select($xpdo->getSelectColumns($classValue, $classValue));
         $q->select("GROUP_CONCAT(`{$classSection}`.`name` SEPARATOR ',') as `section_name`");
 
-        $q->groupby("{$classValue}.value");
+        $q->groupby("{$classValue}.key");
         $q->sortby("{$classField}.rank", "ASC");
 
         if ($class) {
