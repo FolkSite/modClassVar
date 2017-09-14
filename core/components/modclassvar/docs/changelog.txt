@@ -1,5 +1,9 @@
 Changelog for modclassvar
 
+1.1.13-beta (14.09.2017)
+==============
+- Change "initialize" [modclassvar]
+
 1.1.12-beta (10.03.2017)
 ==============
 - Fix "getValues"

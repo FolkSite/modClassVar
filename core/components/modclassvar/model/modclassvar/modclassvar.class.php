@@ -102,7 +102,6 @@ class modclassvar
      */
     public function initialize($ctx = 'web', $scriptProperties = array())
     {
-        $this->modx->error->reset();
         $this->config = array_merge($this->config, $scriptProperties, array('ctx' => $ctx));
 
         if (!empty($this->initialized[$ctx])) {
